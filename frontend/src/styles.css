@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { scrollbar-width: thin; }
+body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
