@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+frontend/node_modules/
+output/uploads/
+models/models--*/
+.DS_Store
