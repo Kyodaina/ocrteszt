@@ -1,0 +1,23 @@
+:root { color-scheme: dark; }
+body.light {
+  background: #fafafa;
+  color: #0a0a0a;
+}
+body.light #dropzone,
+body.light section {
+  border-color: rgba(0, 0, 0, 0.2);
+  background: white;
+}
+.badge {
+  border-radius: 9999px;
+  padding: 0.1rem 0.6rem;
+  font-size: 0.72rem;
+  border: 1px solid rgba(255,255,255,0.35);
+}
+body.light .badge { border-color: rgba(0,0,0,0.3); }
+.truncate-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 260px;
+}
