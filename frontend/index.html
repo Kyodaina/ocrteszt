@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" class="h-full bg-black text-white">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local OCR Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion@11.0.3/dist/framer-motion.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="h-full antialiased">
+    <div class="mx-auto max-w-7xl p-4 md:p-8">
+      <header class="mb-6 flex items-center justify-between gap-3">
+        <h1 class="text-2xl font-semibold tracking-tight md:text-3xl">Local-First OCR Studio</h1>
+        <button id="themeToggle" class="rounded-full border border-white/30 px-4 py-2 text-sm hover:bg-white hover:text-black transition">Light</button>
+      </header>
+
+      <section id="dropzone" class="mb-6 rounded-2xl border border-dashed border-white/40 bg-white/5 p-10 text-center transition hover:bg-white/10">
+        <p class="text-lg font-medium">Drop images or folders here</p>
+        <p class="mt-2 text-sm text-white/70">or use file picker for multi-select / folder upload</p>
+        <div class="mt-4 flex justify-center gap-3">
+          <label class="cursor-pointer rounded-xl bg-white px-4 py-2 text-black">Select Files<input id="fileInput" type="file" multiple accept="image/*" class="hidden" /></label>
+          <label class="cursor-pointer rounded-xl border border-white/40 px-4 py-2">Select Folder<input id="folderInput" type="file" webkitdirectory directory multiple class="hidden" /></label>
+        </div>
+      </section>
+
+      <section class="mb-6 grid grid-cols-1 gap-4 md:grid-cols-4" id="globalStats"></section>
+
+      <section class="mb-6 rounded-2xl border border-white/20 p-4">
+        <div class="mb-3 flex items-center justify-between">
+          <h2 class="font-semibold">Progress</h2>
+          <div class="flex gap-2">
+            <button data-export="csv" class="export-btn rounded-lg border border-white/30 px-3 py-1 text-sm">CSV</button>
+            <button data-export="xlsx" class="export-btn rounded-lg border border-white/30 px-3 py-1 text-sm">XLSX</button>
+            <button data-export="pdf" class="export-btn rounded-lg border border-white/30 px-3 py-1 text-sm">PDF</button>
+          </div>
+        </div>
+        <div class="h-3 w-full overflow-hidden rounded-full bg-white/10">
+          <div id="globalProgress" class="h-full w-0 bg-white transition-all duration-700"></div>
+        </div>
+      </section>
+
+      <section class="mb-6 rounded-2xl border border-white/20 p-4">
+        <div class="mb-4 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+          <h2 class="font-semibold">Results</h2>
+          <div class="flex gap-2">
+            <input id="searchInput" placeholder="Search text or filename" class="w-56 rounded-lg border border-white/30 bg-transparent px-3 py-2 text-sm" />
+            <select id="sortSelect" class="rounded-lg border border-white/30 bg-black px-3 py-2 text-sm">
+              <option value="filename">Sort: Filename</option>
+              <option value="importance">Sort: Importance</option>
+              <option value="confidence">Sort: Confidence</option>
+            </select>
+          </div>
+        </div>
+        <div id="results" class="space-y-3"></div>
+      </section>
+
+      <section class="rounded-2xl border border-white/20 p-4">
+        <h2 class="mb-3 font-semibold">Live Logs</h2>
+        <div id="logs" class="max-h-72 space-y-2 overflow-auto text-xs"></div>
+      </section>
+    </div>
+
+    <template id="skeletonTemplate">
+      <div class="h-28 animate-pulse rounded-xl bg-white/10"></div>
+    </template>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
